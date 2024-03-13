@@ -93,3 +93,8 @@
     - name: Start yabai service
       ansible.builtin.command:
         cmd: yabai --start-service
+
+    - name: Install latest Node LTS
+      ansible.builtin.command:
+        cmd: nvm install --lts
+

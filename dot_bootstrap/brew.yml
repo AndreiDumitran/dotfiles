@@ -38,6 +38,7 @@
       - wget
       - docker
       - docker-compose
+      - chezmoi
       - docker-completion
       - eza
       - fd

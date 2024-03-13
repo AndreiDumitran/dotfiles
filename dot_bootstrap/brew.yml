@@ -27,7 +27,7 @@
       - slack
       - spotify
       - iterm2
-      - stats
+      - Stats
       - qbittorrent
 
     brew_packages:
@@ -49,8 +49,8 @@
       - neovim
       - ranger
       - ripgrep
-      - skhd
-      - yabai
+      - koekeishiya/formulae/skhd
+      - koekeishiya/formulae/yabai
       - starship
       - stow
       - tailscale
@@ -83,3 +83,11 @@
         state: present
       register: result
       until: result is successful
+
+    - name: Start skhd service
+      ansible.builtin.command:
+        cmd: skhd --start-service
+
+    - name: Start yabai service
+      ansible.builtin.command:
+        cmd: yabai --start-service

@@ -65,6 +65,17 @@
 
   tasks:
 
+    - name: Check if Homebrew is installed
+      ansible.builtin.stat:
+        path: "/opt/homebrew/bin/brew"
+      register: homebrew_installed
+      when: install_homebrew_if_missing
+
+    - name: Install Homebrew (if missing)
+      ansible.builtin.shell: |
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      when: install_homebrew_if_missing and not homebrew_installed.stat.exists
+
     - name: Tap Homebrew repositories
       community.general.homebrew_tap:
         name: "{{ item }}"
@@ -109,3 +120,27 @@
         - skhd
         - yabai
 
+    - name: Install Oh-My-Zsh
+      ansible.builtin.shell: 
+        cmd: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+        creates: "{{ ansible_env.HOME }}/.oh-my-zsh"  # Prevents re-running if Oh-My-Zsh is already installed
+
+    - name: Install zsh-syntax-highlighting plugin
+      ansible.builtin.git:
+        repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+        dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+        version: master
+      register: zsh_syntax_highlighting
+      until: zsh_syntax_highlighting is succeeded
+      retries: 3
+      delay: 5
+
+    - name: Install zsh-autosuggestions plugin
+      ansible.builtin.git:
+        repo: https://github.com/zsh-users/zsh-autosuggestions
+        dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+        version: master
+      register: zsh_autosuggestions
+      until: zsh_autosuggestions is succeeded
+      retries: 3
+      delay: 5

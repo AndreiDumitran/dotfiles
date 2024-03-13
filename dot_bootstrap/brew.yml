@@ -65,17 +65,6 @@
 
   tasks:
 
-    - name: Check if Homebrew is installed
-      ansible.builtin.stat:
-        path: "/opt/homebrew/bin/brew"
-      register: homebrew_installed
-      when: install_homebrew_if_missing
-
-    - name: Install Homebrew (if missing)
-      ansible.builtin.shell: |
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-      when: install_homebrew_if_missing and not homebrew_installed.stat.exists
-
     - name: Tap Homebrew repositories
       community.general.homebrew_tap:
         name: "{{ item }}"

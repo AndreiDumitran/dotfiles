@@ -43,6 +43,7 @@
       - eza
       - zoxide
       - fd
+      - nvm
       - fnm
       - fzf
       - lazydocker

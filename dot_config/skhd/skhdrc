@@ -1,0 +1,95 @@
+#SKHD STUFF
+
+## Quickly restart the yabai launch agent
+ctrl + alt + cmd - r : brew services restart yabai
+
+## open Alacritty
+hyper - return : /Applications/WezTerm.app/Contents/MacOS/wezterm-gui
+ctrl + cmd - b             : open -a Obsidian
+ 
+## open google chrome
+hyper - c : open -n -a "Google Chrome"
+
+
+## swap window
+## send window to monitor and follow focus
+## focus display
+ctrl + cmd - 1 : yabai -m window --display 1; yabai -m display --focus 1
+ctrl + cmd - 2 : yabai -m window --display 2; yabai -m display --focus 2
+ctrl + cmd - 3 : yabai -m window --display 3; yabai -m display --focus 3
+
+## flip the tree vertically
+hyper - m : yabai -m space --mirror y-axis
+
+## toggle window fullscreen zoom
+hyper - f : yabai -m window --toggle zoom-fullscreen
+
+# Moving windows between spaces and focus
+hyper - 1 : yabai -m window --space 1;yabai -m window --focus recent
+hyper - 2 : yabai -m window --space 2;yabai -m window --focus recent 
+hyper - 3 : yabai -m window --space 3;yabai -m window --focus recent
+hyper - 4 : yabai -m window --space 4;yabai -m window --focus recent
+
+# balance windows size
+hyper - e : yabai -m space --balance
+
+# destroy space
+hyper - d : yabai -m space --destroy
+
+# create a space
+ctrl - n : yabai -m space --create
+
+# === Resize Mode ===
+# Set resize border color 
+:: resize @ : yabai -m config active_window_border_color 0xE64C53FF 
+
+# toggle resize mode 
+resize < hyper - r ; default
+default < hyper - r ; resize
+# resize commands
+resize < h : yabai -m window --resize left:-50:0; \
+                  yabai -m window --resize right:-50:0
+resize < j : yabai -m window --resize bottom:0:50; \
+                  yabai -m window --resize top:0:50
+resize < k : yabai -m window --resize top:0:-50; \
+                  yabai -m window --resize bottom:0:-50
+resize < l : yabai -m window --resize right:50:0; \
+                  yabai -m window --resize left:50:0
+
+## float / unfloat window and center on screen
+alt - t : yabai -m window --toggle float; \
+
+hyper - n : yabai -m space --create
+
+## move window
+shift + ctrl - a : yabai -m window --move rel:-20:0
+shift + ctrl - s : yabai -m window --move rel:0:20
+shift + ctrl - w : yabai -m window --move rel:0:-20
+shift + ctrl - d : yabai -m window --move rel:20:0
+
+
+
+# Moving windows and split
+shift + lctrl - h : yabai -m window --warp west
+shift + lctrl - j : yabai -m window --warp south
+shift + lctrl - k : yabai -m window --warp north
+shift + lctrl - l : yabai -m window --warp east
+
+# Moving windows 
+alt - h : yabai -m window --swap west
+alt - j : yabai -m window --swap south
+alt - k : yabai -m window --swap north
+alt - l : yabai -m window --swap east
+
+# Navigation
+cmd - h : yabai -m window --focus west
+cmd - j : yabai -m window --focus south
+cmd - k : yabai -m window --focus north
+cmd - l : yabai -m window --focus east
+
+# focus left or right screen
+hyper - h : yabai -m display --focus west
+hyper - l : yabai -m display --focus east 
+
+# toggle split
+hyper - space: yabai -m window --toggle split

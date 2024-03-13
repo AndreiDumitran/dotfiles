@@ -1,0 +1,84 @@
+---
+
+- name: Install MacOS Packages
+  hosts: localhost
+  become: false
+  vars:
+    brew_cask_packages:
+      - firefox
+      - google-chrome
+      - sublime-text
+      - 1password
+      - 1password-cli
+      - itsycal
+      - visual-studio-code
+      - karabiner-elements
+      - vlc
+      - alt-tab
+      - font-monaspace
+      - obsidian
+      - wezterm
+      - caffeine
+      - font-mplus-nerd-font
+      - raycast
+      - zoom
+      - discord
+      - goneovim
+      - slack
+      - spotify
+      - iterm2
+      - stats
+      - qbittorrent
+
+    brew_packages:
+      - git
+      - git-lfs
+      - tmux
+      - tree
+      - wget
+      - docker
+      - docker-compose
+      - docker-completion
+      - eza
+      - fd
+      - fnm
+      - fzf
+      - lazydocker
+      - lazygit
+      - neovim
+      - ranger
+      - ripgrep
+      - skhd
+      - yabai
+      - starship
+      - stow
+      - tailscale
+
+    install_homebrew_if_missing: false
+    upgrade_homebrew_packages: false
+
+  tasks:
+
+    - name: Tap a Homebrew repository, state present
+      community.general.homebrew_tap:
+        name: homebrew/cask-fonts
+
+    - name: Upgrading Homebrew Packages
+      homebrew:
+        upgrade_all: "{{ upgrade_homebrew_packages }}"
+      register: result
+      until: result is successful
+
+    - name: Installing Homebrew Cask Packages
+      homebrew_cask:
+        name: "{{ brew_cask_packages }}"
+        state: present
+      register: result
+      until: result is successful
+
+    - name: Installing Homebrew Packages
+      homebrew:
+        name: "{{ brew_packages }}"
+        state: present
+      register: result
+      until: result is successful

@@ -1,0 +1,18 @@
+alias lg='/opt/homebrew/bin/lazygit "$@"'
+alias k='kubectl'
+alias f='cd $(fd --type d --hidden --exclude .git --exclude node_module --exclude .cache --exclude .npm --exclude .mozilla --exclude .meteor --exclude .nv | fzf)'
+alias brew86="arch -x86_64 /usr/local/homebrew/bin/brew"
+alias mkcd='mkcd_alias() { mkdir -p "$1" && cd "$1"; }; mkcd_alias'
+alias cdl='cd "$1" && ls'
+alias tks='tmux kill-session'
+alias awslogin='/Users/andrei.dumitran/Desktop/work/aws-login.sh'
+alias build='/Users/andrei.dumitran/Desktop/work/build.sh'
+alias unsetaws='unset AWS_ACCESS_KEY_ID && unset AWS_SECRET_ACCESS_KEY && unset AWS_SESSION_TOKEN && unset AWS_PROFILE'
+alias vv='/Applications/neovide.app/Contents/MacOS/neovide'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# Atelierele
+alias awsp="source _awsp"

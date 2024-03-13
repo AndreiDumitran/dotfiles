@@ -1,0 +1,122 @@
+---
+
+- name: Configure MacOS
+  hosts: localhost
+  become: false
+  vars:
+    brew_cask_packages:
+      - firefox
+      - google-chrome
+      - sublime-text
+      - 1password
+      - 1password-cli
+      - itsycal
+      - visual-studio-code
+      - karabiner-elements
+      - vlc
+      - alt-tab
+      - font-monaspace
+      - obsidian
+      - wezterm
+      - caffeine
+      - font-mplus-nerd-font
+      - raycast
+      - zoom
+      - discord
+      - slack
+      - spotify
+      - iterm2
+      - Stats
+      - qbittorrent
+
+    brew_packages:
+      - git
+      - git-lfs
+      - tmux
+      - tree
+      - wget
+      - docker
+      - docker-compose
+      - chezmoi
+      - docker-completion
+      - eza
+      - zoxide
+      - fd
+      - nvm
+      - fnm
+      - fzf
+      - lazydocker
+      - lazygit
+      - neovim
+      - ranger
+      - ripgrep
+      - skhd
+      - yabai
+      - starship
+      - stow
+      - tailscale
+
+    homebrew_taps:
+      - homebrew/cask-fonts
+      - koekeishiya/formulae
+
+    install_homebrew_if_missing: true
+    upgrade_homebrew_packages: false
+
+  tasks:
+
+    - name: Check if Homebrew is installed
+      ansible.builtin.stat:
+        path: "/opt/homebrew/bin/brew"
+      register: homebrew_installed
+      when: install_homebrew_if_missing
+
+    - name: Install Homebrew (if missing)
+      ansible.builtin.shell: |
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      when: install_homebrew_if_missing and not homebrew_installed.stat.exists
+
+    - name: Tap Homebrew repositories
+      community.general.homebrew_tap:
+        name: "{{ item }}"
+      loop: "{{ homebrew_taps }}"
+
+    - name: Conditionally upgrade all Homebrew packages
+      homebrew:
+        upgrade_all: yes
+      when: upgrade_homebrew_packages
+
+    - name: Install Homebrew Cask Packages
+      homebrew_cask:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ brew_cask_packages }}"
+
+    - name: Install Homebrew Packages
+      homebrew:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ brew_packages }}"
+
+    - name: Ensure skhd and yabai services are started
+      ansible.builtin.command:
+        cmd: "{{ item }} --start-service"
+      loop:
+        - skhd
+        - yabai
+
+    - name: Prompt for manual permission confirmation for 'yabai' and 'skhd'
+      ansible.builtin.pause:
+        prompt: >
+          Please manually grant Accessibility permissions for 'yabai' and 'skhd' by going to:
+          System Preferences > Security & Privacy > Privacy > Accessibility.
+          Add 'yabai' and 'skhd' to the list of applications allowed to control your computer.
+          Press 'Enter' once this is done.
+
+    - name: Ensure skhd and yabai services are started
+      ansible.builtin.command:
+        cmd: "{{ item }} --restart-service"
+      loop:
+        - skhd
+        - yabai
+

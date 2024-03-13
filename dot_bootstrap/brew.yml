@@ -41,6 +41,7 @@
       - chezmoi
       - docker-completion
       - eza
+      - zoxide
       - fd
       - fnm
       - fzf

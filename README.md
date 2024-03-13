@@ -6,7 +6,14 @@ This automated setup is currently only configured for Fedora machines.
 
 ## How to run
 
+
+- without SSH key
 ```shell
 export GITHUB_USERNAME=andreidumitran
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply $GITHUB_USERNAME
+````
+- with SSH key
+```shell
+export GITHUB_USERNAME=andreidumitran
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply git@github.com:$GITHUB_USERNAME/dotfiles.git
 ```

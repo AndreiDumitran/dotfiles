@@ -2,7 +2,7 @@
 
 - name: Configure MacOS
   hosts: localhost
-  become: true
+  become: false
   vars:
     brew_cask_packages:
       - firefox

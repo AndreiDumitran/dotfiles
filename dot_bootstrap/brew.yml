@@ -119,9 +119,6 @@
       loop:
         - skhd
         - yabai
-    - name: Install latest Node LTS
-      ansible.builtin.shell: 
-        cmd: nvm install --lts
 
     - name: Install Oh-My-Zsh
       ansible.builtin.shell: 

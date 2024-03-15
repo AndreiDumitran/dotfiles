@@ -198,7 +198,7 @@ config.webgpu_preferred_adapter = {
 config.win32_system_backdrop = "Acrylic"
 config.show_tab_index_in_tab_bar = false
 config.show_new_tab_button_in_tab_bar = false
-config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
+config.leader = { key = " ", mods = "SHIFT", timeout_milliseconds = 1000 }
 config.keys = {
 	{
 		key = "|",

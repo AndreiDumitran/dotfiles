@@ -8,7 +8,7 @@ hyper - return :open -n -a "Wezterm"
 ## open google chrome
 hyper - c : open -n -a "Google Chrome"
 
-hyper - e : open -n -a Finder
+hyper - e : yabai -m space --balance
 
 
 ## swap window

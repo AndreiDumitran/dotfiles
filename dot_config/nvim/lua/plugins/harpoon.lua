@@ -18,7 +18,7 @@ return {
         desc = "Mark Harpoon file",
       },
       {
-        "<tab>",
+        "<leader><tab>",
         function()
           require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
         end,

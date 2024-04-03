@@ -18,6 +18,8 @@ vim.keymap.set({ "n", "x" }, "<leader>sr", function()
   require("ssr").open()
 end)
 
+local harpoon = require("harpoon")
+
 keymap("n", "gl", function()
   vim.diagnostic.open_float()
 end, { desc = "Open floating diagnostic message" })

@@ -14,9 +14,9 @@ keymap("n", "<S-tab>", "<cmd>:Telescope buffers<cr>", {desc = "show buffers"})
 keymap("x", "p", "v_P")
 keymap("n", "y", '"+y')
 keymap("v", "y", '"+y')
-vim.keymap.set({ "n", "x" }, "<leader>sr", function()
-  require("ssr").open()
-end)
+-- vim.keymap.set({ "n", "x" }, "<leader>sr", function()
+--   require("ssr").open()
+-- end)
 
 local harpoon = require("harpoon")
 

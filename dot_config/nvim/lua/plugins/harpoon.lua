@@ -9,56 +9,33 @@ return {
         save_on_change = true,
       },
     },
-    keys = {
-      {
-        "<leader>mm",
-        function()
-          require("harpoon"):list():append()
-        end,
-        desc = "Mark Harpoon file",
-      },
-      {
-        "<leader><tab>",
-        function()
-          require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
-        end,
-        desc = "Toggle Harpoon UI",
-      },
-      {
-        "<leader>1",
-        function()
-          require("harpoon"):list():select(1)
-        end,
-        desc = "harpoon 1",
-      },
-      {
-        "<leader>2",
-        function()
-          require("harpoon"):list():select(2)
-        end,
-        desc = "harpoon 2",
-      },
-      {
-        "<leader>3",
-        function()
-          require("harpoon"):list():select(3)
-        end,
-        desc = "harpoon 3",
-      },
-      {
-        "<leader>4",
-        function()
-          require("harpoon"):list():select(4)
-        end,
-        desc = "harpoon 4",
-      },
-      {
-        "<leader>5",
-        function()
-          require("harpoon"):list():select(5)
-        end,
-        desc = "harpoon 5",
-      },
-    },
+    keys = function()
+      local keys = {
+        {
+          "<leader>mm",
+          function()
+            require("harpoon"):list():add()
+          end,
+          desc = "Harpoon file",
+        },
+        {
+          "<tab>",
+          function()
+            require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
+          end,
+          desc = "Toggle Harpoon UI",
+        },
+      }
+      for i = 1, 5 do
+        table.insert(keys, {
+          "<leader>" .. i,
+          function()
+            require("harpoon"):list():select(i)
+          end,
+          desc = "Harpoon to File " .. i,
+        })
+      end
+      return keys
+    end,
   },
 }

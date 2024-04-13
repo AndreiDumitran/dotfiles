@@ -14,7 +14,9 @@ return {
           },
           documentation = cmp.config.window.bordered({
             documentation = {
-              border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+              -- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+              border = "rounded",
+              winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
             },
           }),
         },

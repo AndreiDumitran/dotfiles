@@ -19,3 +19,22 @@ for _, ls in ipairs(language_servers) do
     -- you can add other fields for setting up lsp server in this table
   })
 end
+
+local border = {
+  { "┌", "FloatBorder" },
+  { "─", "FloatBorder" },
+  { "┐", "FloatBorder" },
+  { "│", "FloatBorder" },
+  { "┘", "FloatBorder" },
+  { "─", "FloatBorder" },
+  { "└", "FloatBorder" },
+  { "│", "FloatBorder" },
+}
+
+-- Add border to the diagnostic popup window
+vim.diagnostic.config({
+  virtual_text = {
+    prefix = "■ ", -- Could be '●', '▎', 'x', '■', , 
+  },
+  float = { border = border },
+})

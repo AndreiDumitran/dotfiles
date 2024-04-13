@@ -15,7 +15,6 @@ yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Path Finder$" manage=off
 yabai -m rule --add app="Fantastical" manage=off
 yabai -m rule --add app="^Spotify$" manage=off
-yabai -m rule --add app="^iTerm2$" manage=off
 yabai -m rule --add app="^Messenger" manage=off
 yabai -m rule --add app="^Authy Desktop" manage=off
 yabai -m rule --add app="^Pritunl" manage=off

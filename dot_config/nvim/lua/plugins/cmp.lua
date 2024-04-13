@@ -20,8 +20,13 @@ return {
             },
           }),
         },
+        preselect = "none",
+        completion = {
+          completeopt = "menu,menuone,noinsert,noselect",
+        },
       })
     end,
+    keys = {},
   },
   {
     "hrsh7th/nvim-cmp",
@@ -60,6 +65,8 @@ return {
             fallback()
           end
         end, { "i", "s" }),
+        ["<S-CR>"] = cmp.mapping.confirm({ select = true }),
+        ['<CR>'] = vim.NIL,
       })
     end,
   },

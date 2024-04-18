@@ -55,6 +55,7 @@
       - starship
       - stow
       - tailscale
+      - bat
 
     homebrew_taps:
       - homebrew/cask-fonts

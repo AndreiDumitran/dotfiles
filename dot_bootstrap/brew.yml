@@ -56,6 +56,7 @@
       - stow
       - tailscale
       - bat
+      - gh
 
     homebrew_taps:
       - homebrew/cask-fonts

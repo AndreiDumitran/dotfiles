@@ -8,7 +8,6 @@ alias tks='tmux kill-session'
 alias awslogin='/Users/andrei.dumitran/Desktop/work/aws-login.sh'
 alias build='/Users/andrei.dumitran/Desktop/work/build.sh'
 alias unsetaws='unset AWS_ACCESS_KEY_ID && unset AWS_SECRET_ACCESS_KEY && unset AWS_SESSION_TOKEN && unset AWS_PROFILE'
-alias vv='/Applications/neovide.app/Contents/MacOS/neovide'
 
 alias ..='cd ..'
 alias ...='cd ../..'

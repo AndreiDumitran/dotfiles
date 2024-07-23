@@ -14,6 +14,7 @@ keymap("n", "<S-tab>", "<cmd>:Telescope buffers<cr>", { desc = "show buffers" })
 keymap("x", "p", "v_P")
 keymap("n", "y", '"+y')
 keymap("v", "y", '"+y')
+keymap("n", "\\", "<cmd>:Neotree toggle<cr>", { desc = "Toggle Neotree" })
 vim.keymap.set("n", "<C-i>", "<C-i>")
 
 keymap("n", "gl", function()

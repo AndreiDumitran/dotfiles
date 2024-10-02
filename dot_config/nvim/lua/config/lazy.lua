@@ -11,7 +11,6 @@ require("lazy").setup({
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import any extras modules here
-    { import = "lazyvim.plugins.extras.editor.harpoon2" },
 
     -- Languages
     { import = "lazyvim.plugins.extras.lang.clangd" },
@@ -57,6 +56,7 @@ require("lazy").setup({
 
     -- util
     { import = "lazyvim.plugins.extras.util.project" },
+    { import = "lazyvim.plugins.extras.editor.harpoon2" },
 
     { import = "lazyvim.plugins.extras.vscode" },
     { import = "plugins" },

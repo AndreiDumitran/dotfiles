@@ -5,7 +5,6 @@
 vim.cmd("autocmd BufEnter * set formatoptions-=cro")
 vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro")
 vim.cmd("highlight FoldColumn guibg=black guifg=darkgrey")
-vim.cmd("UfoDetach")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.foldingRange = {

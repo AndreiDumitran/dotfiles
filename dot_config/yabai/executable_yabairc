@@ -4,14 +4,26 @@ sudo yabai --uninstall-sa
 sudo yabai --install-sa
 sudo yabai --load-sa
 
+yabai -m signal --add event=window_created action="~/.config/yabai/aspect-ratio.sh"
+yabai -m signal --add event=window_destroyed action="~/.config/yabai/aspect-ratio.sh"
+yabai -m signal --add event=window_moved action="~/.config/yabai/aspect-ratio.sh"
+yabai -m signal --add event=window_minimized action="~/.config/yabai/aspect-ratio.sh"
+yabai -m signal --add event=window_deminimized action="~/.config/yabai/aspect-ratio.sh"
+yabai -m signal --add event=space_changed action="~/.config/yabai/aspect-ratio.sh"
+yabai -m signal --add event=application_launched action="~/.config/yabai/aspect-ratio.sh"
+yabai -m signal --add event=application_terminated action="~/.config/yabai/aspect-ratio.sh"
+yabai -m signal --add event=space_changed action="~/.config/yabai/aspect-ratio.sh"
+yabai -m signal --add event=display_moved action="~/.config/yabai/aspect-ratio.sh"
+
 # float system preferences. Most of these just diable Yabai form resizing them.
-yabai -m rule --add app="^System Preferences$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Finder$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Calculator$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Alfred Preferences$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Disk Utility$" sticky=on layer=above manage=off
-yabai -m rule --add app="^System Information$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
+yabai -m rule --add app="^System Preferences$" layer=above manage=off
+yabai -m rule --add app="^Finder$" layer=above manage=off
+yabai -m rule --add app="^Calculator$" layer=above manage=off
+yabai -m rule --add app="^Alfred Preferences$" layer=above manage=off
+yabai -m rule --add app="^Disk Utility$" layer=above manage=off
+yabai -m rule --add app="^System Information$" layer=above manage=off
+yabai -m rule --add app="^System Settings$" layer=above manage=off
+yabai -m rule --add app="^Activity Monitor$" layer=above manage=off
 yabai -m rule --add app="^Path Finder$" manage=off
 yabai -m rule --add app="Fantastical" manage=off
 yabai -m rule --add app="^Spotify$" manage=off
@@ -20,6 +32,8 @@ yabai -m rule --add app="^Authy Desktop" manage=off
 yabai -m rule --add app="^Pritunl" manage=off
 yabai -m rule --add app="^Messages" manage=off
 yabai -m rule --add app="^Slack$" title="Window Title" border=off
+
+yabai -m rule --add app!="^(System Preferences|System Settings|)$" manage=off
 
 yabai -m config window_border_blur off
 

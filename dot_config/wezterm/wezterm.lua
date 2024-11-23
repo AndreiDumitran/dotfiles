@@ -13,7 +13,7 @@ wezterm.on("restore_session", function(window)
 	session_manager.restore_state(window)
 end)
 
-wezterm.max_fps = 120
+wezterm.max_fps = 240
 
 config.inactive_pane_hsb = {
 	saturation = 0.24,

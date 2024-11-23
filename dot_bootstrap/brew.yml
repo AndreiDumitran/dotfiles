@@ -42,6 +42,7 @@
       - eza
       - zoxide
       - fd
+      - jq
       - nvm
       - fnm
       - fzf

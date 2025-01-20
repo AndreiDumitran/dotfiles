@@ -9,6 +9,12 @@ return {
     enabled = false,
   },
   {
+    "snacks.nvim",
+    opts = {
+      scroll = { enabled = false },
+    },
+  },
+  {
     "neovim/nvim-lspconfig",
     opts = {
       document_highlight = { enabled = false },

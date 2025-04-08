@@ -20,3 +20,4 @@ vim.keymap.set("n", "<C-i>", "<C-i>")
 keymap("n", "gl", function()
   vim.diagnostic.open_float()
 end, { desc = "Open floating diagnostic message" })
+

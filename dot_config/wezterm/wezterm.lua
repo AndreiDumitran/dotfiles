@@ -92,7 +92,8 @@ config.keys = {
 		mods = "LEADER",
 		action = wezterm.action.CloseCurrentPane({ confirm = true }),
 	},
-	{ key = "f", mods = "LEADER", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
+  { key = "R", mods = "CTRL|SHIFT", action = wezterm.action.ActivateCommandPalette },
+	{ key = "F", mods = "LEADER", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
 	{
 		key = "W",
 		mods = "LEADER",
